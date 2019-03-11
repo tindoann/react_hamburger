@@ -1,9 +1,9 @@
-import React, { Component } from 'react'
-import './menuContent.css'
-import { createECDH } from 'crypto';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types'; 
+import './menuContent.css'; 
 
 class MenuContent extends Component {
-  contructor(props) {
+  constructor(props) {
     super(props)
 
     this.items = []
@@ -16,22 +16,22 @@ class MenuContent extends Component {
     return (
       <div className="menu">
         {this.items.map(i => <div className="menu-item" key={i}>
-          <a href="https://github.com/Middlerun/cheeseburger-menu"
-          onClick={this.props.closeCallback}
-          target="_blank">
-          Menu item {i}
-         </a>
-      </div>)}
+          <a
+            href="https://github.com/tindoann/react_hamburger"
+            onClick={this.props.closeCallback}
+            target="_blank">
+            Menu item {i}
+          </a>
+        </div>)}
 
-      <p className="hint">Click outside the menu to close it, or swipe </p>
-    </div>
+        <p className="hint">Click outside the menu to close it, or swipe it closed on touch device</p>
+      </div>
     )
   }
 }
 
-MenuContent.PropTypes = {
-  closeCallback: React.ProTypes.func.isRequired
+MenuContent.propTypes = {
+  closeCallback: PropTypes.isRequired
 }
 
-export default MenuContent; 
-
+export default MenuContent

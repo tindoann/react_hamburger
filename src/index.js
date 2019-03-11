@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { render } 'react-dom'
+import { render } from 'react-dom'
 import CheeseburgerMenu from 'cheeseburger-menu'
 import HamburgerMenu from 'react-hamburger-menu'
 import MenuContent from './menuContent'
