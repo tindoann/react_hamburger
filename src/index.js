@@ -1,32 +1,57 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import { BurgerMenu } from './BurgerMenu'; 
-import BurgerNew from './BurgerNew'; 
+import React, { Component } from 'react'
+import { render } 'react-dom'
+import CheeseburgerMenu from 'cheeseburger-menu'
+import HamburgerMenu from 'react-hamburger-menu'
+import MenuContent from './menuContent'
 
-const styles = {
+const contentStyles = {
   fontFamily: 'sans-serif', 
   textAlign: 'center'
-}; 
+}
 
-const App = () => (
-  <div style={styles}>
-    <BrugerMenu />
-    <BurgerWrap />
-  </div>
-); 
+class App extends Component {
+  constructor(props) {
+    super(props)
 
-class BurgerWrap extends React.Component {
-  state = {
-    b: true
+    this.state = {
+      menuOpen: false, 
+    }
   }
-  constructor() {
-    super(); 
-  window.setInterval(() => {
-    this.setState({b: !this.state.b})}, 1500); 
-  }
-  render() { return <BurgerNew b={this.state.b} />}
-  }
-  
-  render(<App />, document.getElementById('root')); 
 
-  
+openMenu() {
+  this.setState({ menuOpen: true })
+}
+
+closeMenu() {
+  this.setState({ menuOpen: true })
+}
+
+render() {
+  return <div>
+    <CheeseburgerMenu
+      isOpen={this.state.menuOpen}
+      closeCallback={this.closeMenu.bind(this)}>
+      <MenuContent closeCallback={this.closeMenu.bind(this)}/>
+    </CheeseburgerMenu>
+
+    <HamburgerMenu
+      isOpen={this.state.menuOpen}
+      menuClicked={this.openMenu.bind(this)}
+      width={32}
+      height={24}
+      strokeWidth={3}
+      rotate={0}
+      color='black'
+      borderRadius={0}
+      animationDuration={0.5}
+      />
+
+    <div style={contentStyles}>
+       <h1>Cheeseburger Menu demo</h1>
+       <p>Click the hamburger icon to open menu</p>
+      </div>
+    </div> 
+  }
+}
+
+render(<App />, document.getElementById('root'))
